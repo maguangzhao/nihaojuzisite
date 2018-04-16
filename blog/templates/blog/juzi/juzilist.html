@@ -1,0 +1,25 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+    {% for juzi in juzis %}
+        <div style="line-height:150%;background-color: white;padding: 15px;margin: 20px;text-indent:2em" >
+            <p></p>
+            <p class="text-left"> {{juzi.body}} </p>
+        <p class="text-right">——{{juzi.author}}</p>
+    </div>
+    {% endfor %}
+
+
+    <nav aria-label="..." style="text-align:center;">
+    <ur class="pager">
+        {% if page_obj.has_previous %}
+        <li><a href="?page={{ page_obj.previous_page_number }}">上一页</a></li>
+        {% endif %}
+        <span class="current">
+          页数 {{ page_obj.number }}／{{ page_obj.paginator.num_pages }}.
+        </span>
+        {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}">下一页</a></li>
+        {% endif %}
+    </nav>
+{% endblock %}
